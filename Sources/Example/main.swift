@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Darwin.ncurses
+// import Darwin.ncurses
 import TermKit
 import OpenCombine
 // So the debugger can attach
@@ -60,7 +60,6 @@ func makeMenu () -> MenuBar {
     return MenuBar (menus: [
         MenuBarItem(title: "_File", children: [
             MenuItem(title: "Text _Editor Demo", action: showEditor),
-            MenuItem(title: "Open _Terminal", action: { openTerminal (win) } ),
             MenuItem(title: "_New", help: "Creates new file", action: newFile),
             MenuItem(title: "_Open", action: openFile),
             MenuItem(title: "_Hex", action: showHex),
@@ -84,7 +83,6 @@ frame.set (x: 10, y: 10, width: 60, height: 20)
 var options: [(text: String, func: () -> Toplevel)] = [
     ("Assorted",     { Assorted () }),
     ("File Dialogs", { FileDialogs () }),
-    ("Terminal",     { TerminalDemo () }),
     ("DataTable",    { DataTableDialogs () }),
     ("Editor",       { DemoDesktop () }),
     ("Quit",         { Application.shutdown(); return Window () })

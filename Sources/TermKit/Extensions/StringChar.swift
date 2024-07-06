@@ -6,6 +6,7 @@
 //  Copyright © 2019 Miguel de Icaza. All rights reserved.
 //
 
+import Curses
 import Foundation
 
 //

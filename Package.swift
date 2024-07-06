@@ -22,19 +22,19 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/OpenCombine/OpenCombine.git", from: "0.11.0"),
         .package(url: "https://github.com/migueldeicaza/TextBufferKit.git", from: "0.3.0"),
-        .package(url: "https://github.com/migueldeicaza/SwiftTerm.git", from: "1.0.4")
+        .package(url: "https://github.com/apple/swift-log", from: "1.6.1")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "TermKit",
-            dependencies: ["Curses", "OpenCombine", "TextBufferKit", "SwiftTerm"]),
+            dependencies: ["Curses", "OpenCombine", "TextBufferKit", .product(name: "Logging", package: "swift-log")]),
         .systemLibrary(
             name: "Curses"), // , pkgConfig: "/tmp/ncursesw.pc"),
         .target(
             name: "Example",
-            dependencies: ["TermKit", "SwiftTerm"]),
+            dependencies: ["TermKit"]),
             .testTarget(
                 name: "TermKitTests",
                 dependencies: ["TermKit"]),

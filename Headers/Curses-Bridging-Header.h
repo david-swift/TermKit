@@ -8,7 +8,9 @@
 
 #ifndef Curses_Bridging_Header_h
 #define Curses_Bridging_Header_h
+#define _XOPEN_SOURCE 700
 #include <wchar.h>
+#include <ncurses.h>
 
 typedef struct
 {

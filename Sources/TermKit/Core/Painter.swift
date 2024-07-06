@@ -5,6 +5,7 @@
 //  Created by Miguel de Icaza on 12/26/20.
 //
 
+import Curses
 import Foundation
 
 /**

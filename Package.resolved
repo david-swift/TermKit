@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "OpenCombine",
+        "repositoryURL": "https://github.com/OpenCombine/OpenCombine.git",
+        "state": {
+          "branch": null,
+          "revision": "8576f0d579b27020beccbccc3ea6844f3ddfc2c2",
+          "version": "0.14.0"
+        }
+      },
+      {
+        "package": "swift-log",
+        "repositoryURL": "https://github.com/apple/swift-log",
+        "state": {
+          "branch": null,
+          "revision": "9cb486020ebf03bfa5b5df985387a14a98744537",
+          "version": "1.6.1"
+        }
+      },
+      {
+        "package": "TextBufferKit",
+        "repositoryURL": "https://github.com/migueldeicaza/TextBufferKit.git",
+        "state": {
+          "branch": null,
+          "revision": "7f3ed5b1d7288de34ad853544d802647be11cfcf",
+          "version": "0.3.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

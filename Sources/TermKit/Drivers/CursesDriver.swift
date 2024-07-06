@@ -93,7 +93,7 @@ class CursesDriver: ConsoleDriver {
         keypad(cursesWindow, true)
     
         mouseEvents = mousemask (mmask_t (UInt (cursesAllEvents | cursesReportMousePosition)), &oldMouseEvents)
-        if (mouseEvents & UInt (cursesReportMousePosition)) != 0 {
+        if (mouseEvents & .init(cursesReportMousePosition)) != 0 {
             startReportingMouseMoves()
         }
         start_color()
@@ -545,7 +545,7 @@ class CursesDriver: ConsoleDriver {
     
     func stopReportingMouseMoves ()
     {
-        if (mouseEvents & UInt(cursesReportMousePosition)) != 0 {
+        if (mouseEvents & .init(cursesReportMousePosition)) != 0 {
             print ("\u{1b}[?1003l")
             fflush(stdout)
         }
@@ -553,7 +553,7 @@ class CursesDriver: ConsoleDriver {
     
     func startReportingMouseMoves ()
     {
-        if (mouseEvents & UInt (cursesReportMousePosition)) != 0 {
+        if (mouseEvents & .init(cursesReportMousePosition)) != 0 {
             print ("\u{1b}[?1003h")
             fflush (stdout)
         }

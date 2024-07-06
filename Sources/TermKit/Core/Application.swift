@@ -7,26 +7,15 @@
 //
 
 import Foundation
-import Darwin.ncurses
-import os
+import Logging
 
 var fd: Int32 = -1
 @available(OSX 11.0, *)
-var logger: Logger = Logger(subsystem: "termkit", category: "TermKit")
+var logger: Logger = .init(label: "TermKit")
 
 func log (_ s: String)
 {
-    if #available(macOS 11.0, *) {
-        logger.log("log: \(s, privacy: .public)")
-        return
-    }
-    if fd == -1 {
-        fd = open ("/tmp/log", O_CREAT | O_RDWR, S_IRWXU)
-    }
-    let data = (s + "\n").data(using: String.Encoding.utf8)!
-    let _ = data.withUnsafeBytes { (dataBytes: UnsafeRawBufferPointer) -> Int in
-        return write(fd, dataBytes.baseAddress, data.count)
-    }
+    logger.info(.init(stringLiteral: s))
 }
 
 class SizeError: Error {
