@@ -7,16 +7,11 @@
 //
 
 import Foundation
-import Logging
 
 var fd: Int32 = -1
-@available(OSX 11.0, *)
-var logger: Logger = .init(label: "TermKit")
 
 func log (_ s: String)
-{
-    logger.info(.init(stringLiteral: s))
-}
+{ }
 
 class SizeError: Error {
 }

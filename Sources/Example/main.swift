@@ -14,6 +14,7 @@ import OpenCombine
 sleep (1)
 
 Application.prepare()
+
 let win = Window()
 win.x = Pos.at (0)
 win.y = Pos.at (1)
@@ -122,3 +123,4 @@ Application.top.addSubview(subwin)
 Application.top.addSubview(makeMenu ())
 Application.run()
 print ("ending")
+

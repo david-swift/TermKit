@@ -11,15 +11,6 @@
         }
       },
       {
-        "package": "swift-log",
-        "repositoryURL": "https://github.com/apple/swift-log",
-        "state": {
-          "branch": null,
-          "revision": "9cb486020ebf03bfa5b5df985387a14a98744537",
-          "version": "1.6.1"
-        }
-      },
-      {
         "package": "TextBufferKit",
         "repositoryURL": "https://github.com/migueldeicaza/TextBufferKit.git",
         "state": {
