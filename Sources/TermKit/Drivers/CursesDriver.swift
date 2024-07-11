@@ -70,8 +70,12 @@ class CursesDriver: ConsoleDriver {
     var mouseEvents: mmask_t
 
     
+    #if os(macOS)
     typealias get_wch_def = @convention(c) (UnsafeMutablePointer<Int32>) -> Int
-    
+    // Dynamically loaded definitions, because Darwin.ncurses does not bring these
+    var get_wch_fn: get_wch_def? = nil
+    #endif
+
 
     override init ()
     {
@@ -103,7 +107,14 @@ class CursesDriver: ConsoleDriver {
         size = Size (width: Int (getmaxx (stdscr)), height: Int (getmaxy (stdscr)))
         
         clear ();
-        
+
+        #if os(macOS)
+        let rtld_default = UnsafeMutableRawPointer(bitPattern: -2)
+        // Fetch the pointers to get_wch and add_wch as the NCurses binding in Swift is missing them
+        let get_wch_ptr = dlsym (rtld_default, "get_wch")
+        get_wch_fn = unsafeBitCast(get_wch_ptr, to: get_wch_def.self)
+        #endif
+
         selectColors()
     }
     
@@ -184,7 +195,13 @@ class CursesDriver: ConsoleDriver {
             }
         }
     }
-    
+
+    #if os(macOS)
+    func get_wch(_ result: UnsafeMutablePointer<Int32>) -> Int {
+        return get_wch_fn!(result)
+    }
+    #endif
+
     //
     // Invoked when there is data available on standard input, takes the ncurses input
     // and creates a mouse or keyboard event and feeds it to the Application
